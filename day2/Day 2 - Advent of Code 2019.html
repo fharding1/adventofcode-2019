@@ -87,12 +87,10 @@ If you'd like to hang out, I'm @ericwastl on Twitter.
 
 -->
 <body>
-<header><div><h1 class="title-global"><a href="https://adventofcode.com/">Advent of Code</a></h1><nav><ul><li><a href="https://adventofcode.com/2019/about">[About]</a></li><li><a href="https://adventofcode.com/2019/events">[Events]</a></li><li><a href="https://teespring.com/adventofcode-2019" target="_blank">[Shop]</a></li><li><a href="https://adventofcode.com/2019/settings">[Settings]</a></li><li><a href="https://adventofcode.com/2019/auth/logout">[Log Out]</a></li></ul></nav><div class="user"> franklin <span class="star-count">2*</span></div></div><div><h1 class="title-event">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="title-event-wrap">/^</span><a href="https://adventofcode.com/2019">2019</a><span class="title-event-wrap">$/</span></h1><nav><ul><li><a href="https://adventofcode.com/2019">[Calendar]</a></li><li><a href="https://adventofcode.com/2019/support">[AoC++]</a></li><li><a href="https://adventofcode.com/2019/sponsors">[Sponsors]</a></li><li><a href="https://adventofcode.com/2019/leaderboard">[Leaderboard]</a></li><li><a href="https://adventofcode.com/2019/stats">[Stats]</a></li></ul></nav></div></header>
+<header><div><h1 class="title-global"><a href="https://adventofcode.com/">Advent of Code</a></h1><nav><ul><li><a href="https://adventofcode.com/2019/about">[About]</a></li><li><a href="https://adventofcode.com/2019/events">[Events]</a></li><li><a href="https://teespring.com/adventofcode-2019" target="_blank">[Shop]</a></li><li><a href="https://adventofcode.com/2019/settings">[Settings]</a></li><li><a href="https://adventofcode.com/2019/auth/logout">[Log Out]</a></li></ul></nav><div class="user"> franklin <span class="star-count">4*</span></div></div><div><h1 class="title-event">&nbsp;&nbsp;&nbsp;<span class="title-event-wrap">var y=</span><a href="https://adventofcode.com/2019">2019</a><span class="title-event-wrap">;</span></h1><nav><ul><li><a href="https://adventofcode.com/2019">[Calendar]</a></li><li><a href="https://adventofcode.com/2019/support">[AoC++]</a></li><li><a href="https://adventofcode.com/2019/sponsors">[Sponsors]</a></li><li><a href="https://adventofcode.com/2019/leaderboard">[Leaderboard]</a></li><li><a href="https://adventofcode.com/2019/stats">[Stats]</a></li></ul></nav></div></header>
 
 <div id="sidebar">
-<div id="sponsor"><div class="quiet">Our <a href="https://adventofcode.com/2019/sponsors">sponsors</a> help make Advent of Code possible:</div><div class="sponsor"><a href="https://www.novetta.com/careers/" target="_blank" onclick="if(ga)ga('send','event','sponsor','sidebar',this.href);" rel="noopener">Novetta</a>
- - While Santa has elves, we have TS/SCI data scientists rapidly 
-prototyping ML solutions...hot chocolate included. Check us out.</div></div>
+<div id="sponsor"><div class="quiet">Our <a href="https://adventofcode.com/2019/sponsors">sponsors</a> help make Advent of Code possible:</div><div class="sponsor"><a href="https://www.codethink.co.uk/" target="_blank" onclick="if(ga)ga('send','event','sponsor','sidebar',this.href);" rel="noopener">Codethink Ltd.</a> - Codethink is a software services company, expert in the use of Open Source technologies for systems software engineering.</div></div>
 </div><!--/sidebar-->
 
 <main>
@@ -139,11 +137,29 @@ there are enough spare parts up there to build a new Intcode computer!"</p>
 gravity assist program (your puzzle input) to the "1202 program alarm" 
 state it had just before the last computer caught fire. To do this, <em>before running the program</em>, replace position <code>1</code> with the value <code>12</code> and replace position <code>2</code> with the value <code>2</code>. <em>What value is left at position <code>0</code></em> after the program halts?</p>
 </article>
-<p>To begin, <a href="https://adventofcode.com/2019/day/2/input" target="_blank">get your puzzle input</a>.</p>
-<form method="post" action="2/answer"><input type="hidden" name="level" value="1"><p>Answer: <input type="text" name="answer" autocomplete="off"> <input type="submit" value="[Submit]"></p></form>
+<p>Your puzzle answer was <code>4138687</code>.</p><article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>"Good, the new computer seems to be working correctly!  <em>Keep it nearby</em>
+ during this mission - you'll probably use it again. Real Intcode 
+computers support many more features than your new one, but we'll let 
+you know what they are as you need them."</p>
+<p>"However, your current priority should be to complete your gravity 
+assist around the Moon. For this mission to succeed, we should settle on
+ some terminology for the parts you've already built."</p>
+<p>Intcode programs are given as a list of integers; these values are used as the initial state for the computer's <em>memory</em>.
+ When you run an Intcode program, make sure to start by initializing 
+memory to the program's values. A position in memory is called an <em>address</em> (for example, the first value in memory is at "address 0").</p>
+<p>Opcodes (like <code>1</code>, <code>2</code>, or <code>99</code>) mark the beginning of an <em>instruction</em>.  The values used immediately after an opcode, if any, are called the instruction's <em>parameters</em>.  For example, in the instruction <code>1,2,3,4</code>, <code>1</code> is the opcode; <code>2</code>, <code>3</code>, and <code>4</code> are the parameters. The instruction <code>99</code> contains only an opcode and has no parameters.</p>
+<p>The address of the current instruction is called the <em>instruction pointer</em>; it starts at <code>0</code>.  After an instruction finishes, the instruction pointer increases by <em>the number of values in the instruction</em>; until you add more instructions to the computer, this is always <code>4</code> (<code>1</code> opcode + <code>3</code> parameters) for the add and multiply instructions. (The halt instruction would increase the instruction pointer by <code>1</code>, but it halts the program instead.)</p>
+<p>"With terminology out of the way, we're ready to proceed. To complete the gravity assist, you need to <em>determine what pair of inputs produces the output <code>19690720</code></em>."</p>
+<p>The inputs should still be provided to the program by replacing the values at addresses <code>1</code> and <code>2</code>, just like before.  In this program, the value placed in address <code>1</code> is called the <em>noun</em>, and the value placed in address <code>2</code> is called the <em>verb</em>.   Each of the two input values will be between <code>0</code> and <code>99</code>, inclusive.</p>
+<p>Once the program has halted, its output is available at address <code>0</code>, also just like before. Each time you try a pair of inputs, make sure you first <em>reset the computer's memory to the values in the program</em> (your puzzle input) - in other words, don't reuse memory from a previous attempt.</p>
+<p>Find the input <em>noun</em> and <em>verb</em> that cause the program to produce the output <code>19690720</code>. <em>What is <code>100 * noun + verb</code>?</em> (For example, if <code>noun=12</code> and <code>verb=2</code>, the answer would be <code>1202</code>.)</p>
+</article>
+<p>Your puzzle answer was <code>6635</code>.</p><p class="day-success">Both parts of this puzzle are complete! They provide two gold stars: **</p>
+<p>At this point, you should <a href="https://adventofcode.com/2019">return to your Advent calendar</a> and try another puzzle.</p>
+<p>If you still want to see it, you can <a href="https://adventofcode.com/2019/day/2/input" target="_blank">get your puzzle input</a>.</p>
 <p>You can also <span class="share">[Share<span class="share-content">on
-  <a href="https://twitter.com/intent/tweet?text=%221202+Program+Alarm%22+%2D+Day+2+%2D+Advent+of+Code+2019&amp;url=https%3A%2F%2Fadventofcode%2Ecom%2F2019%2Fday%2F2&amp;related=ericwastl&amp;hashtags=AdventOfCode" target="_blank">Twitter</a>
-  <a href="http://www.reddit.com/submit?url=https%3A%2F%2Fadventofcode%2Ecom%2F2019%2Fday%2F2&amp;title=%221202+Program+Alarm%22+%2D+Day+2+%2D+Advent+of+Code+2019" target="_blank">Reddit</a></span>]</span> this puzzle.</p>
+  <a href="https://twitter.com/intent/tweet?text=I%27ve+completed+%221202+Program+Alarm%22+%2D+Day+2+%2D+Advent+of+Code+2019&amp;url=https%3A%2F%2Fadventofcode%2Ecom%2F2019%2Fday%2F2&amp;related=ericwastl&amp;hashtags=AdventOfCode" target="_blank">Twitter</a>
+  <a href="http://www.reddit.com/submit?url=https%3A%2F%2Fadventofcode%2Ecom%2F2019%2Fday%2F2&amp;title=I%27ve+completed+%221202+Program+Alarm%22+%2D+Day+2+%2D+Advent+of+Code+2019" target="_blank">Reddit</a></span>]</span> this puzzle.</p>
 </main>
 
 <!-- ga -->
