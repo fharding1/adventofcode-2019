@@ -5,7 +5,10 @@ fn main() {
     let path = "input";
 
     let input = fs::read_to_string(path).unwrap();
-    let input: Vec<i64> = input.split(",").map(|x| x.parse::<i64>().unwrap()).collect();
+    let input: Vec<i64> = input
+        .split(",")
+        .map(|x| x.parse::<i64>().unwrap())
+        .collect();
 
     for noun in 0..99 {
         for verb in 0..99 {
