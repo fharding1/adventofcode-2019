@@ -2,12 +2,19 @@ use std::fs::File;
 use std::io::{BufReader, BufRead};
 
 fn fuel_requirement(mass: i64) -> i64 {
-    let fuel = (mass / 3) - 2;
-    if fuel <= 0 {
-        return 0;
-    }
+    let mut total_fuel = 0;
 
-    return fuel + fuel_requirement(fuel);
+    let mut cur_mass = mass;
+    loop {
+        cur_mass = (cur_mass / 3) - 2;
+        if cur_mass <= 0 {
+            break
+        }
+        
+        total_fuel += cur_mass;
+    }
+    
+    return total_fuel;
 }
 
 fn main() {
