@@ -1,5 +1,4 @@
 use std::fs;
-use std;
 
 fn main() {
     let path = "input";
@@ -10,7 +9,7 @@ fn main() {
         .map(|x| x.parse::<i64>().unwrap())
         .collect();
 
-    for noun in 0..99 {
+    'nouns: for noun in 0..99 {
         for verb in 0..99 {
             let mut memory = input.clone();
 
@@ -34,7 +33,7 @@ fn main() {
         
             if memory[0] == 19690720 {
                 println!("{}", 100 * noun + verb);
-                break;
+                break 'nouns;
             }
         }
     }
