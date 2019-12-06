@@ -15,27 +15,26 @@ fn main() {
 
             memory[1] = noun;
             memory[2] = verb;
-        
+
             let mut pc = 0;
             while memory[pc] != 99 {
-                let a: i64 = memory[memory[pc+1] as usize];
-                let b: i64 = memory[memory[pc+2] as usize];
-                let position = memory[pc+3] as usize;
-        
+                let a: i64 = memory[memory[pc + 1] as usize];
+                let b: i64 = memory[memory[pc + 2] as usize];
+                let position = memory[pc + 3] as usize;
+
                 match memory[pc] {
                     1 => memory[position] = a + b,
                     2 => memory[position] = a * b,
                     _ => panic!("unexpected op code"),
                 }
-        
+
                 pc += 4;
             }
-        
+
             if memory[0] == 19690720 {
                 println!("{}", 100 * noun + verb);
                 break 'nouns;
             }
         }
     }
-
 }

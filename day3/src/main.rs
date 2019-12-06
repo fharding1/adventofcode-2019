@@ -1,5 +1,5 @@
-use std::fs;
 use std::collections::HashSet;
+use std::fs;
 use std::iter::FromIterator;
 
 enum Vector {
@@ -51,7 +51,7 @@ fn input_to_vectors(input: &str) -> [Vec<Vector>; 2] {
     [wires.next().unwrap(), wires.next().unwrap()]
 }
 
-fn wire_to_points(wire: &Vec<Vector>)-> Vec<[i32; 2]> {
+fn wire_to_points(wire: &Vec<Vector>) -> Vec<[i32; 2]> {
     let mut pos = [0, 0];
     let mut points = Vec::new();
 
@@ -84,11 +84,13 @@ fn main() {
             let key = wire1_points
                 .iter()
                 .position(|x| x[0] == v[0] && x[1] == v[1])
-                .unwrap() + 1
+                .unwrap()
+                + 1
                 + wire2_points
                     .iter()
                     .position(|x| x[0] == v[0] && x[1] == v[1])
-                    .unwrap() + 1;
+                    .unwrap()
+                + 1;
             (key, v)
         })
         .min_by_key(|v| v.0)

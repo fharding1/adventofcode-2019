@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::{BufReader, BufRead};
+use std::io::{BufRead, BufReader};
 
 fn fuel_requirement(mass: i64) -> i64 {
     let mut total_fuel = 0;
@@ -8,12 +8,12 @@ fn fuel_requirement(mass: i64) -> i64 {
     loop {
         cur_mass = (cur_mass / 3) - 2;
         if cur_mass <= 0 {
-            break
+            break;
         }
-        
+
         total_fuel += cur_mass;
     }
-    
+
     return total_fuel;
 }
 
@@ -29,6 +29,6 @@ fn main() {
         let mass: i64 = line.unwrap().parse().unwrap();
         total_fuel += fuel_requirement(mass);
     }
-    
+
     println!("Total Fuel: {}", total_fuel);
 }
